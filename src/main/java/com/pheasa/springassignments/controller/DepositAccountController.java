@@ -50,4 +50,13 @@ public class DepositAccountController {
     public List<DepositAccounts> searchDepositAccounts(@RequestParam(required = false) String keyword){
         return depositAccountsService.searchDepositAccounts(keyword);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<DepositAccounts> getDepositAccountById(@PathVariable Long id){
+        DepositAccounts depositAccount = depositAccountsService.getDepositAccountById(id);
+        if(depositAccount == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(depositAccount);
+    }
 }
