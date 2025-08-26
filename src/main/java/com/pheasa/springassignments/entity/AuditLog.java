@@ -4,7 +4,7 @@ import lombok.Data;
 import java.time.Instant;
 
 @Entity
-@Table(name = "audit_log")
+@Table(name = "sys_audit_log")
 @Data
 public class AuditLog {
 
