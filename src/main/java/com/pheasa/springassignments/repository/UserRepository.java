@@ -11,6 +11,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findByBstatusTrue();
     @Query("SELECT u FROM User u WHERE u.bstatus = true AND " +
             "(" +
+            "LOWER(u.usercode) LIKE LOWER(CONCAT('%', :keyword, '%')) OR " +
             "LOWER(u.username) LIKE LOWER(CONCAT('%', :keyword, '%')) OR " +
             "LOWER(u.fullname) LIKE LOWER(CONCAT('%', :keyword, '%')) OR " +
             "LOWER(u.email) LIKE LOWER(CONCAT('%', :keyword, '%'))" +
